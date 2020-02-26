@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Banquet Registration &amp; Managing System</title>
+    <!-- To adjust different kinds of devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"> -->
+    <!-- <script src="js/bootstrap.min.js"></script> -->
+
+    <!-- Import Bootstrap with js (bundle for popover)-->
+    <link href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+
+    <!-- HTML5 Shiv 和 Respond.js 用于让 IE8 支持 HTML5元素和媒体查询 -->
+    <!-- 注意： 如果通过 file://  引入 Respond.js 文件，则该文件无法起效果 -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+    <!-- Firebase UI -->
+    <script type="text/javascript" src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
+
+    <script language="JavaScript" src ="js/main.js"></script>
+    <script language="JavaScript" src ="js/admin-login.js"></script>
+    <link href="css/mainstyle.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css" rel="stylesheet">
+
+</head>
+<body>
+    <br/>
+    <script language="JavaScript">headBar();</script>
+    <br/>
+    <div class="container">
+        <div class="row reminder-container">
+            <div class="col-lg-1 col-xl-1"></div>
+            <div class="col-1" style="text-align: left;">
+                <button type="button" class="btn-lg btn-outline-dark square-btn" 
+                onclick="javascript: window.history.go(-1);">
+                    <span class="oi oi-home"></span>
+                </button>
+            </div>
+            <div class="col reminder" style="text-align: left;">
+                <h4>Administrator Login</h4>
+                <h6>Hotel ICONIA staff only.</h6>
+            </div>
+            <div class="col-lg-1 col-xl-1"></div>
+        </div>
+    </div>
+    <br/>
+    <div class="container" id="login-container">
+        <div class="row">
+            <div class="col-lg-1 col-xl-1"></div>
+            <div class="col-12 col-lg-10 col-xl-10" style="text-align: center;">
+                <!--<div id="login-form" method="POST">
+                    <div class="input-group" style="max-width: 600px; margin: 0px auto;">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" style="font-size:16px;">
+                                <span class="oi oi-person"></span>&nbsp;Staff Email
+                            </span>
+                        </div>
+                        <input type="text" class="form-control" name="staff-id" id="staff-id" required="required" placeholder="Test: 1234"/>
+                    </div>
+                    <div class="input-group" style="max-width: 600px; margin: 0px auto;">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" style="font-size:16px;">
+                                <span class="oi oi-key"></span>&nbsp;Password
+                            </span>
+                        </div>
+                        <input type="password" class="form-control" name="password" id="password" required="required" placeholder="Test: 1234"/>
+                    </div>
+                    <div style="margin: 20px auto;">
+                        <button type="button" class="btn btn-info next-btn" id="login-btn" onclick="javascript:Login();">Login</button>
+                    </div>
+                </div>-->
+                <div id="firebaseui-auth-container"></div>
+                <div id="loader">Loading...</div>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <br/>
+    <br/>
+    <script language="JavaScript">btmNavBar();</script>
+    <script>
+        var ui = new firebaseui.auth.AuthUI(firebase.auth());
+        ui.start('#firebaseui-auth-container', {
+            signInOptions: [
+                firebase.auth.EmailAuthProvider.PROVIDER_ID
+            ],
+            // Other config options...
+        });
+        
+        var uiConfig = {
+            callbacks: {
+                signInSuccess: function(currentUser, credential, redirectUrl) {
+                // User successfully signed in.
+                // Return type determines whether we continue the redirect automatically
+                // or whether we leave that to developer to handle.
+                /*window.opener=null;
+                window.open('','_self');
+                window.close();*/
+                return true;
+                },
+                uiShown: function() {
+                // The widget is rendered.
+                // Hide the loader.
+                document.getElementById('loader').style.display = 'none';
+                }
+            },
+            // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
+            signInFlow: 'popup',
+            signInSuccessUrl: 'manage.html',
+            signInOptions: [
+                // Leave the lines as is for the providers you want to offer your users.
+                //firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+                //firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+                //firebase.auth.TwitterAuthProvider.PROVIDER_ID,
+                //firebase.auth.GithubAuthProvider.PROVIDER_ID,
+                firebase.auth.EmailAuthProvider.PROVIDER_ID,
+                //firebase.auth.PhoneAuthProvider.PROVIDER_ID
+            ],
+            // Terms of service url.
+            tosUrl: 'index.html'
+        };
+        ui.start('#firebaseui-auth-container', uiConfig);
+    </script>
+</body>
+</html>

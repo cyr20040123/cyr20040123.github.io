@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Banquet Registration &amp; Managing System</title>
+    <!-- To adjust different kinds of devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <script src="https://code.jquery.com/jquery.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+    <!-- Firebase UI -->
+    <script type="text/javascript" src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
+    
+
+    <!-- Import Bootstrap with js (bundle for popover)-->
+    <link href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+
+    <!-- HTML5 Shiv 和 Respond.js 用于让 IE8 支持 HTML5元素和媒体查询 -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script type="text/javascript">
+        window.onbeforeunload = function(){
+            var event = event || window.event;
+            if (event) {
+                event.returnValue = 'Are you sure to go to homepage? This unfinished sheet may be cleaned.';
+            }
+            return 'Are you sure to go to homepage? This unfinished sheet may be cleaned.';
+        }
+    </script>
+    <script type="text/javascript" src ="js/main.js"></script>
+    <script type="text/javascript" src ="js/registration-form.js"></script>
+    <link href="css/mainstyle.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css" rel="stylesheet">
+    
+</head>
+
+<body>
+    <br/>
+    <script type="text/javascript">headBar();</script>
+    <br/>
+    <div class="container" id="form-container">
+        <form id="attendee-reg" method="GET">
+
+        <!-- ====== ROW1: Banquet Selection ====== -->
+
+        <div class="row reminder-container row1">
+            <div class="col-lg-1 col-xl-1"></div>
+            <div class="col-1" style="text-align: left;">
+                <button type="button" class="btn-lg btn-outline-dark square-btn" 
+                onclick="javascript:if(confirm('Are you sure to go to homepage? This unfinished sheet may be cleaned.')) {window.onbeforeunload = null; self.location='index.html';}">
+                    <span class="oi oi-home"></span>
+                </button>
+            </div>
+            <div class="col reminder" style="text-align: left;">
+                <h4>Attendee Register</h4>
+                <h6>Please select the banquet you are going to attend below.</h6>
+            </div>
+            <div class="col-lg-1 col-xl-1"></div>
+        </div>
+        <div class="row row1"><div style="height:30px"></div></div>
+        <div class="row row1">
+            <div class="col-lg-1 col-xl-1"></div>
+            <div class="col-12 col-lg-10 col-xl-10">
+                <div class="form-group" id="banquet-selector">
+                    <table class="table table-sm table-hover" id="table-selector">
+                        <tbody id='banquet-table'>
+                            <thead>
+                                <tr>
+                                    <th scope="col"></th>
+                                    <th scope="col">#ID</th>
+                                    <th scope="col">Banquet</th>
+                                    <th scope="col">Time</th>
+                                    <th scope="col">Location</th>
+                                    <th scope="col">Remark</th>
+                                </tr>
+                            </thead>
+                            <!--<tr>
+                                <td>
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" id="1025" name="banquetRadio" class="custom-control-input" value="1025"/>
+                                        <label class="custom-control-label" for="1025"></label>
+                                    </div>
+                                </td>
+                                <td>1025</td>
+                                <td>Thanksgiving Dinner</td>
+                                <td>18 Mar 2018</td>
+                                <td>18:00</td>
+                                <td>John's Family</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" id="1026" name="banquetRadio" class="custom-control-input" value="1026"/>
+                                        <label class="custom-control-label" for="1026"></label>
+                                    </div>
+                                </td>
+                                <td>1026</td>
+                                <td>C &amp; R Wedding Ceremony</td>
+                                <td>8 Apr 2018</td>
+                                <td>17:30</td>
+                                <td>Please take your invitation card.</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" id="1028" name="banquetRadio" class="custom-control-input" value="1028"/>
+                                        <label class="custom-control-label" for="1028"></label>
+                                    </div>
+                                </td>
+                                <td>1028</td>
+                                <td>President's Welcome</td>
+                                <td>10 Apr 2018</td>
+                                <td>11:30</td>
+                                <td>PolyU</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" id="1029" name="banquetRadio" class="custom-control-input" value="1029"/>
+                                        <label class="custom-control-label" for="1029"></label>
+                                    </div>
+                                </td>
+                                <td>1029</td>
+                                <td>Excellent Award</td>
+                                <td>11 Apr 2018</td>
+                                <td>15:30</td>
+                                <td>HKSAR</td>
+                            </tr>-->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <script>readBanquets();</script>
+        <div class="row row1">
+            <button type="button" class="btn btn-secondary next-btn" id='next-btn-1' onclick="javascript:checkP1();" disabled>Loading Banquets ...</button>
+        </div>
+
+        <!-- ====== ROW2: Personal information ====== -->
+
+        <div class="row reminder-container row2">
+            <div class="col-lg-1 col-xl-1"></div>
+            <div class="col-1" style="text-align: left;">
+                <button type="button" class="btn-lg btn-outline-dark square-btn" 
+                onclick="javascript:$('.row2').hide(); $('.row1').show();">
+                    <span class="oi oi-chevron-left"></span>
+                </button>
+            </div>
+            <div class="col reminder" style="text-align: left;">
+                <h4>Attendee Register</h4>
+                <h6>Please fill your personal information for our verification. All elements are mendatory.</h6>
+            </div>
+            <div class="col-lg-1 col-xl-1"></div>
+        </div>
+        <div class="row row2"><div style="height:30px"></div></div>
+        <div class="row row2">
+            <div class="col-lg-1 col-xl-1"></div>
+            <div class="col-12 col-lg-10 col-xl-10">
+                <div class="form-group" id="personal-information-sheet">
+                    <div class="input-group mb-3"><div class="input-group-prepend">
+                        <span class="input-group-text">First Name</span></div>
+                        <input type="text" class="form-control" name="first-name" id="first-name" required="required" placeholder="e.g. Taiman"/>
+                    </div>
+                    <div class="input-group mb-3"><div class="input-group-prepend">
+                        <span class="input-group-text">Last Name</span></div>
+                        <input type="text" class="form-control" name="last-name" id="last-name" required="required" placeholder="e.g. CHAN"/>
+                    </div>
+                    <div class="input-group mb-3"><div class="input-group-prepend">
+                        <span class="input-group-text">Guest Type</span></div>
+                        <select class="custom-select" name="guest-type" id="guest-type" required="required" onChange="guestTypeChange();">
+                            <option selected disabled value=""> ▼ (Please Choose) </option>
+                            <option value="vip">VIP</option>
+                            <option value="sponsor">Sponsor</option>
+                            <option value="delegate">Delegate</option>
+                        </select>
+                    </div>
+                    <div class="input-group mb-3"><div class="input-group-prepend">
+                        <span class="input-group-text" style="font-size: 14px; text-align:left; line-height:15px">Affiliated<br/>Organization</span></div>
+                        <input type="text" class="form-control" name="ao" id="ao" required="required" placeholder="e.g. HK PolyU"/>
+                    </div>
+                    <div class="input-group mb-3"><div class="input-group-prepend">
+                        <span class="input-group-text">Phone</span></div>
+                        <input type="tel" class="form-control" name="phone" id="phone" required="required" placeholder="e.g. 56781234"/>
+                    </div>
+                    <div class="input-group mb-3"><div class="input-group-prepend">
+                        <span class="input-group-text">Email</span></div>
+                        <input type="email" class="form-control" name="email" id="email" required="required" placeholder="e.g. taiman@gmail.com"/>
+                    </div>
+                    
+                    <!--<label for="ao">Affiliated Organization</label>
+                    <input type="text" class="form-control" id="ao" placeholder="e.g. HK PolyU">-->
+                </div>
+            </div>
+        </div>
+
+        <div class="row row2">
+            <button type="button" class="btn btn-secondary next-btn" onclick="javascript: checkP2();">Meal Choice</button>
+        </div>
+
+        <!-- ====== ROW2: Personal information ====== -->
+
+        <div class="row reminder-container row3">
+            <div class="col-lg-1 col-xl-1"></div>
+            <div class="col-1" style="text-align: left;">
+                <button type="button" class="btn-lg btn-outline-dark square-btn" 
+                onclick="javascript:$('.row3').hide(); $('.row2').show();">
+                    <span class="oi oi-chevron-left"></span>
+                </button>
+            </div>
+            <div class="col reminder" style="text-align: left;">
+                <h4>Attendee Register</h4>
+                <h6>Please select one meal and one drink below.</h6>
+            </div>
+            <div class="col-lg-1 col-xl-1"></div>
+        </div>
+        <div class="row row3"><div style="height:30px"></div></div>
+        <div class="row row3">
+            <div class="col-lg-1 col-xl-1"></div>
+            <div class="col-12 col-lg-10 col-xl-10">
+                <div class="form-group food-selector">
+                    <div class="meal-choice-div meal-choice">
+                        <input type="radio" name="meal" value="meal1" id="meal1" style="display: none;"/>
+                        <label for="meal1">
+                            <div class="meal-card" id='meal1-content'>
+                                <!--<img class="food-img" src="img/spaghetti.jpg"  alt="Spaghetti"/>
+                                <div class="meal-info" id='meal1-info'>
+                                    <h5>Spaghetti</h5>
+                                    <p>Pork Sauce: 70g Spaghetti: 300g Vegetable: 50g</p>
+                                </div>-->
+                            </div>
+                        </label>
+                    </div> 
+                    <div class="meal-choice-div meal-choice">
+                        <input type="radio" name="meal" value="meal2" id="meal2" style="display: none;"/>
+                        <label for="meal2">
+                            <div class="meal-card" id='meal2-content'>
+                                <!--<img class="food-img" src="img/pizza.jpg"  alt="Pizza"/>
+                                <div class="meal-info" id='meal2-info'>
+                                    <h5>Pizza</h5>
+                                    <p>Pizza 100%</p>
+                                </div>-->
+                            </div>
+                        </label>
+                    </div>
+                    <div class="meal-choice-div meal-choice">
+                        <input type="radio" name="meal" value="meal3" id="meal3" style="display: none;"/>
+                        <label for="meal3">
+                            <div class="meal-card" id='meal3-content'>
+                                <!--<img class="food-img" src="img/noodle.jpg"  alt="Noodle - Plain Food"/>
+                                <div class="meal-info" id='meal3-info'>
+                                    <h5>Beef Noodle</h5>
+                                    <h6>[Plain Food]</h6>
+                                    <p>Beef: 80g Noodle: 350g</p>
+                                </div>-->
+                            </div>
+                        </label>
+                    </div> 
+                    <div class="meal-choice-div meal-choice">
+                        <input type="radio" name="meal" value="meal4" id="meal4" style="display: none;"/>
+                        <label for="meal4">
+                            <div class="meal-card" id='meal4-content'>
+                                <!--<img class="food-img" src="img/vegetable.jpg"  alt="Vegetable Salad"/>
+                                <div class="meal-info" id='meal4-info'>
+                                    <h5>Vegetable Salad</h5>
+                                    <h6>[For Vegetarians]</h6>
+                                    <p>Vegetable 100%</p>
+                                </div>-->
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group food-selector">
+                    <div class="meal-choice-div drink-choice">
+                        <input type="radio" name="drink" value="juice" id="drink01" style="display: none;"/>
+                        <label for="drink01">
+                            <div class="meal-card">
+                                <img class="drink-img" src="img/juice.jpg"  alt="Orange Juice"/>
+                                <div class="meal-info">
+                                    <h5>Orange Juice</h5>
+                                </div>
+                            </div>
+                        </label>
+                    </div> 
+                    <div class="meal-choice-div drink-choice">
+                        <input type="radio" name="drink" value="tea" id="drink02" style="display: none;"/>
+                        <label for="drink02">
+                            <div class="meal-card">
+                                <img class="drink-img" src="img/tea.jpg"  alt="Green Tea"/>
+                                <div class="meal-info">
+                                    <h5>Green Tea</h5>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="meal-choice-div drink-choice">
+                        <input type="radio" name="drink" value="7up" id="drink03" style="display: none;"/>
+                        <label for="drink03">
+                            <div class="meal-card">
+                                <img class="drink-img" src="img/7up.jpg"  alt="7-up"/>
+                                <div class="meal-info">
+                                    <h5>7-up</h5>
+                                </div>
+                            </div>
+                        </label>
+                    </div> 
+                    <div class="meal-choice-div drink-choice">
+                        <input type="radio" name="drink" value="coke" id="drink04" style="display: none;"/>
+                        <label for="drink04">
+                            <div class="meal-card">
+                                <img class="drink-img" src="img/coke.jpg"  alt="Coke"/>
+                                <div class="meal-info">
+                                    <h5>Coke</h5>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="input-group mb-3"><div class="input-group-prepend">
+                    <span class="input-group-text" id="remark-label" style="width: auto;">Remark</span>
+                    </div>
+                    <input type="text" class="form-control" id="remark" placeholder="Please select your guest type in the previous page."/>
+                </div> 
+            </div>
+        </div>
+        
+        <div class="row row3">
+            <button type="button" class="btn btn-info next-btn" onclick="javascript: checkP3();">Submit</button>
+        </div>
+
+        </form>
+    </div>
+
+    <br/>
+    <br/>
+    <br/>
+    <script type="text/javascript"> $('.row2').hide(); $('.row3').hide(); btmNavBar();</script>
+</body>
+</html>

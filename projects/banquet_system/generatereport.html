@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Banquet Registration &amp; Managing System</title>
+    
+    <!-- To adjust different kinds of devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+
+    <!-- Bootstrap with js (bundle for popover)-->
+    <link href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+
+    <!-- HTML5 Shiv 和 Respond.js 用于让 IE8 支持 HTML5元素和媒体查询 -->
+    <!-- 注意： 如果通过 file://  引入 Respond.js 文件，则该文件无法起效果 -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+    <!-- Firebase UI -->
+    <script type="text/javascript" src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
+
+    <!-- User JSs and CSSs-->
+    <script language="JavaScript" src ="js/main.js"></script>
+    <script language="JavaScript" src ="js/banquet-list.js"></script>
+    <link href="css/mainstyle.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css" rel="stylesheet">
+    
+</head>
+
+<body>
+    <br/>
+    <script type="text/javascript">headBar();</script>
+    <br/>
+    <div class="container" id="form-container">
+
+        <!-- ====== ROW1: Banquet Selection ====== -->
+
+        <div class="row reminder-container row1">
+            <div class="col-lg-1 col-xl-1"></div>
+            <div class="col-1" style="text-align: left;">
+                <button type="button" class="btn-lg btn-outline-dark square-btn" 
+                onclick="javascript: self.location='manage.html';">
+                    <span class="oi oi-chevron-left"></span>
+                </button>
+            </div>
+            <div class="col reminder" style="text-align: left;">
+                <h4>Generate Report</h4>
+                <h6>Please select the banquets below which to be generated.</h6>
+            </div>
+            <div class="col-lg-1 col-xl-1"></div>
+        </div>
+        <div class="row"><div style="height:10px"></div></div>
+        <div class="row row1">
+            <div class="col-lg-1 col-xl-1"></div>
+            <div class="col-12 col-lg-10 col-xl-10">
+                <form id="banquet-filter">
+                <div class="banquet-filter">
+                    <div class="input-group input-group-sm">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Keyword(s)</span>
+                        </div>
+                        <input type="text" class="form-control" name="keywords" id="keywords"/>
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Banquet ID</span>
+                        </div>
+                        <input type="text" class="form-control" name="banquet-id" id="banquet-id" style="max-width:300px;"/>
+                    </div>
+                    <div class="input-group input-group-sm">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Count</span>
+                        </div>
+                        <select class="custom-select form-control form-control-sm" name="recent-count" id="recent-count">
+                            <option selected disabled value=""> ▼ (Please Choose) </option>
+                            <option value="1">Recent 1 banquet</option>
+                            <option value="3">Recent 3 banquet</option>
+                            <option value="5">Recent 5 banquet</option>
+                            <option value="10">Recent 10 banquet</option>
+                            <option value="20">Recent 20 banquet</option>
+                        </select>
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Recent Days</span>
+                        </div>
+                        <select class="custom-select form-control form-control-sm" name="recent-days" id="recent-days" style="max-width:300px;">
+                            <option selected disabled value=""> ▼ (Please Choose) </option>
+                            <option value="1">In 1 Day</option>
+                            <option value="3">In 3 Days</option>
+                            <option value="5">In 5 Days</option>
+                            <option value="7">In 7 Days</option>
+                            <option value="14">In 14 Days</option>
+                        </select>
+                    </div>
+                    <button type="button" class="btn btn-light btn-sm filter-btn" onclick="javascript: window.location.href='generatereport.html'">
+                        <span class="oi oi-reload"></span>&nbsp;&nbsp;Reset Filter
+                    </button>
+                    <button type="button" class="btn btn-light btn-sm filter-btn" title="About the filter" 
+                    data-container="body" data-toggle="popover" data-placement="left" data-trigger="focus"
+                    data-content="After click this buttom, the page will refresh and the banquets which are conform to the rules will be displayed below.">
+                        <span class="oi oi-task"></span>&nbsp;&nbsp;Apply Banquet Filter
+                    </button>
+                    <!--<button type="submit" class="btn btn-light btn-sm filter-btn">
+                        <span class="oi oi-task"></span>&nbsp;&nbsp;Apply Banquet Filter
+                    </button>-->
+                </div>
+                </form>
+            </div>
+        </div>
+        <br/>
+        <form id="attendee-reg" method="GET">
+        <div class="row">
+            <div class="col-lg-1 col-xl-1"></div>
+            <div class="col-12 col-lg-10 col-xl-10">
+                <div class="form-group" id="banquet-selector">
+                    <table class="table table-sm table-hover">
+                        <tbody>
+                            <thead>
+                                <tr>
+                                    <th scope="col"></th>
+                                    <th scope="col">#ID</th>
+                                    <th scope="col">Banquet</th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Time</th>
+                                    <th scope="col">Remark</th>
+                                </tr>
+                            </thead>
+                            <tr>
+                                <td>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" id="1025" name="banquet" class="custom-control-input" value="1025" checked="checked" />
+                                        <label class="custom-control-label" for="1025"></label>
+                                    </div>
+                                </td>
+                                <td>1025</td>
+                                <td>Thanksgiving Dinner</td>
+                                <td>18 Mar 2018</td>
+                                <td>18:00</td>
+                                <td>John's Family</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" id="1026" name="banquet" class="custom-control-input" value="1026" checked="checked" />
+                                        <label class="custom-control-label" for="1026"></label>
+                                    </div>
+                                </td>
+                                <td>1026</td>
+                                <td>C &amp; R Wedding Ceremony</td>
+                                <td>8 Apr 2018</td>
+                                <td>17:30</td>
+                                <td>Please take your invitation card.</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" id="1028" name="banquet" class="custom-control-input" value="1028" checked="checked" />
+                                        <label class="custom-control-label" for="1028"></label>
+                                    </div>
+                                </td>
+                                <td>1028</td>
+                                <td>President's Welcome</td>
+                                <td>10 Apr 2018</td>
+                                <td>11:30</td>
+                                <td>PolyU</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" id="1029" name="banquet" class="custom-control-input" value="1029" checked="checked" />
+                                        <label class="custom-control-label" for="1029"></label>
+                                    </div>
+                                </td>
+                                <td>1029</td>
+                                <td>Excellent Award</td>
+                                <td>11 Apr 2018</td>
+                                <td>15:30</td>
+                                <td>HKSAR</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <button type="button" class="btn btn-secondary next-btn" id="generate-btn" style="max-width: 450px;" onclick="window.open('sample-report.pdf');">Generate Report for Selected Banquets</button>
+        </div>
+        
+        </form>
+    </div>
+
+    <br/>
+    <br/>
+    <br/>
+    <script type="text/javascript"> btmNavBar("1234");</script>
+</body>
+</html>

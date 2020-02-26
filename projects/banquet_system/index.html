@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Banquet Registration &amp; Managing System</title>
+    
+    <!-- To adjust different kinds of devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+    
+    <!-- Bootstrap with js (bundle for popover)-->
+    <link href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+
+    <!-- HTML5 Shiv 和 Respond.js 用于让 IE8 支持 HTML5元素和媒体查询 -->
+    <!-- 注意： 如果通过 file://  引入 Respond.js 文件，则该文件无法起效果 -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- User JSs and CSSs-->
+    <script language="JavaScript" src ="js/main.js"></script>
+    <link href="css/mainstyle.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css" rel="stylesheet">
+    
+</head>
+
+<body>
+    <br/>
+    <script language="JavaScript">headBar();</script>
+    <!--<div class="container-fluid" style="background: var(--white4); text-align: center;">
+        <div class="row">
+            <div class="col-lg-1 col-xl-2"></div>
+            <div class="col-12 col-sm-2 col-md-2 col-lg-2 col-xl-1"><img src="img/LOGO.png" alt="Hotel ICONIA" style="max-height: 120px;"/></div>
+            <div class="col-12 col-sm-10 col-md-10 col-lg-8 col-xl-7" style="text-align:center; margin:auto; color:darkslategray;"><h2>Banquet Registration &amp; Managing System</h2></div>
+            <div class="col-lg-1 col-xl-1"></div>
+        </div>
+    </div>-->
+    <br/>
+    <div class="container">
+        <div class="row" id="reminder-container">
+            <div class="col-lg-1 col-xl-1"></div>
+            <div class="col reminder" style="text-align: left;">
+                <h6>Thank you for visiting Hotel ICONIA website.</h6>
+                <h6>Dear guest, to register for a banquet, please click "Attendee Register".</h6>
+            </div>
+            <div class="col-1" style="text-align: right;">
+                <button type="button" class="btn-lg btn-outline-dark square-btn" title="Have any problem?" 
+                data-container="body" data-toggle="popover" data-placement="left" data-trigger="focus"
+                data-content="If you have any problem in online registration, you may also register via Tel. 56781234 (9:00 ~ 22:00).">
+                    <span class="oi oi-info"></span>
+                </button>
+            </div>
+            <div class="col-lg-1 col-xl-1"></div>
+        </div>
+    </div>
+    <!--<div class="container">
+        <div class="row">
+            <div class="col-xs-6 col-sm-4 col-md-2 col-lg-2 col-xs-offset-0 col-sm-offset-0 col-md-offset-2 col-lg-offset-2" style="padding: 10px;">
+                <img src="img/mockbanquet.png" class="img-responsive img-center"/>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-2 col-lg-2 col-xs-offset-0 col-sm-offset-0 col-md-offset-1 col-lg-offset-1" style="padding: 10px;">
+                <img src="img/attendeeregister.png" class="img-responsive img-center"/>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-2 col-lg-2 col-xs-offset-0 col-sm-offset-0 col-md-offset-1 col-lg-offset-1" style="padding: 10px;">
+                <img src="img/history.png" class="img-responsive img-center"/>
+            </div>
+        </div>
+    </div>-->
+    <div class="container">
+        <div class="row" id="main-buttons" style="text-align: center;">
+            <div class="col-lg-1 col-xl-2"></div>
+            <div class="col-12 col-lg-10 col-xl-8">
+                <!--<button type="button" class="btn btn-dark big-main-btn" id="mock-bqt" onclick='f404();'></button>-->
+                <button type="button" class="btn btn-dark big-main-btn" id="atd-reg" onclick="javascript:window.location.href='attendeeregister.html'"></button> 
+                <!--<button type="button" class="btn btn-dark big-main-btn" id="history" onclick='f404();'></button>-->
+            </div>
+            <div class="col-lg-1 col-xl-2"></div>
+        </div>
+    </div>
+    <br/>
+    <div class="container" id="news-container">
+        <div class="row">
+            <div class="col-lg-1 col-xl-1"></div>
+                <div class="col-12 col-lg-10 col-xl-10">
+                <button type="button" id="news-btn" class="btn btn-light">
+                    <span class="oi oi-globe"></span>&nbsp;&nbsp;News and Notice
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-1 col-xl-1"></div>
+            <div class="col-12 col-lg-10 col-xl-10">
+                <table class="table table-sm table-hover">
+                    <tbody>
+                        <tr>
+                            <td><a>Hotel ICONIA sets to make IPO debut today.</a></td>
+                            <td style="text-align: right;"><span class="badge badge-secondary">&nbsp;1 Apr 2018</span></td>
+                        </tr>
+                        <tr>
+                            <td><a>Online registration system will be on maintenance on 2 Apr.</a></td>
+                            <td style="text-align: right;"><span class="badge badge-secondary">&nbsp;1 Apr 2018</span></td>
+                        </tr>
+                        <tr>
+                            <td><a>ICONIA foundation plan to donate $10 million to HKPU.</a></td>
+                            <td style="text-align: right;"><span class="badge badge-secondary">30 Mar 2018</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <br/>
+    <br/>
+    <script language="JavaScript">btmNavBar();</script>
+</body>
+</html>
