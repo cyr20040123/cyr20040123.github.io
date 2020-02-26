@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+	<title>View Users - Food Ordering System</title>
+
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/main_style.css" rel="stylesheet">
+
+    <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
+    <script src="js/fo_firebase.js"></script>
+
+	<script language="JavaScript" src ="js/jquery-3.3.1.min.js"></script>
+	<script language="JavaScript" src ="js/bootstrap.min.js"></script>
+    <script language="JavaScript" src ="js/duplicate_content.js"></script>
+    <script language="JavaScript" src ="js/view_users.js"></script>
+</head>
+
+<body>
+    <br/>
+    <script type="text/javascript">headBar();CheckAdmin(ViewUsers);</script>
+    <br/>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-1 col-xl-1"></div>
+            <div class="col reminder" style="text-align: left;">
+                <h4>View All Users</h4>
+                <h6>Administrators only.</h6>
+            </div>
+            <div class="col-lg-1 col-xl-1"></div>
+        </div>
+        <div class="row">
+            <div class="col-lg-1 col-xl-1"></div>
+            <div class="col-12 col-lg-10 col-xl-10">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>User ID in Database</th>
+                            <th>Name</th>
+                            <th>View Detail</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-lg-1 col-xl-1"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-3 col-lg-4 col-xl-4"></div>
+            <div class="col-6 col-lg-4 col-xl-4" style="text-align: right;">
+                <button type="button" class="btn btn-primary btn-block" onclick="javascript:window.opener=null;window.open('','_self');window.close();">Close</button>
+            </div>
+            <div class="col-3 col-lg-4 col-xl-4"></div>
+        </div>
+
+    </div>
+
+    <br/>
+    <br/>
+    <br/>
+    <!--<script type="text/javascript">btmNavBar();</script>>-->
+</body>
+</html>

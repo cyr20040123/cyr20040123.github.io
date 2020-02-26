@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+	<title>Register - Food Ordering System</title>
+
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/main_style.css" rel="stylesheet">
+
+    <script language="JavaScript">var profilepage=true;</script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
+    <script src="js/fo_firebase.js"></script>
+
+	<script language="JavaScript" src ="js/jquery-3.3.1.min.js"></script>
+	<script language="JavaScript" src ="js/bootstrap.min.js"></script>
+    <script language="JavaScript" src ="js/duplicate_content.js"></script>
+    <script language="JavaScript" src ="js/register.js"></script>
+</head>
+
+<body>
+    <br/>
+    <script type="text/javascript">headBar();</script>
+    <br/>
+    <div class="container" id="form-container">
+        <div class="row reminder-container row2">
+            <div class="col-lg-1 col-xl-1"></div>
+            <div class="col reminder" style="text-align: left;">
+                <h4>User Register</h4>
+                <h6>Please fill the form to finish the registration.</h6>
+                <h6>Your personal information will be protected well. Other users cannot access your personal data.</h6>
+            </div>
+            <div class="col-lg-1 col-xl-1"></div>
+        </div>
+        <div class="row row2">
+            <div class="col-lg-1 col-xl-1"></div>
+            <div class="col-12 col-lg-10 col-xl-10">
+                <div class="form-group" id="personal-information-sheet">
+                    <div class="input-group mb-3"><div class="input-group-prepend">
+                        <span class="input-group-text">Auth ID</span></div>
+                        <input type="text" class="form-control" name="dbid" id="dbid" required="required" disabled/>
+                    </div>
+                    <div class="input-group mb-3"><div class="input-group-prepend">
+                        <span class="input-group-text">Name</span></div>
+                        <input type="text" class="form-control" name="name" id="name" required="required"/>
+                    </div>
+                    <div class="input-group mb-3"><div class="input-group-prepend">
+                        <span class="input-group-text">Phone Number</span></div>
+                        <input type="tel" class="form-control" name="phonenumber" id="phonenumber" required="required"/>
+                    </div>
+                    <div class="input-group mb-3"><div class="input-group-prepend">
+                        <span class="input-group-text">Address</span></div>
+                        <input type="text" class="form-control" name="address" id="address" required="required"/>
+                    </div>
+                    <div class="input-group mb-3"><div class="input-group-prepend">
+                        <span class="input-group-text">Gender</span></div>
+                        <select class="custom-select" name="gender" id="gender" required="required">
+                            <option selected value=""> ▼ (Please Choose) </option>
+                            <option value="female">Female</option>
+                            <option value="male">Male</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row row2">
+            <div class="col-1 col-lg-2 col-xl-2"></div>
+            <!--<div class="col-4 col-lg-3 col-xl-3" style="text-align: left;">
+                <button type="button" class="btn btn-warning next-btn btn-block" onclick="javascript: resetContent();">Reset</button>
+            </div>-->
+            <div class="col-5 col-lg-4 col-xl-4" style="text-align: right;">
+                <button type="button" class="btn btn-danger next-btn btn-block" onclick="firebase.auth().signOut(); window.location.href = './login.html';">Use Another Email</button>
+            </div>
+            <div class="col-5 col-lg-4 col-xl-4" style="text-align: center;">
+                <button type="button" id="edit-btn" class="btn btn-info next-btn btn-block" onclick="regSubmit();">Submit & Register</button>
+            </div>
+            <div class="col-1 col-lg-2 col-xl-2"></div>
+        </div>
+
+    </div>
+
+    <br/>
+    <br/>
+</body>
+</html>

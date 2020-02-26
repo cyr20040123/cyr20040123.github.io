@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Surakarta Instruction</title>
+<link rel="stylesheet" href="css/main-style.css" type="text/css" />
+
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBMvzJu_guEMFp3JpC-gjywqtobrKaHT4k",
+    authDomain: "c-surakarta.firebaseapp.com",
+    databaseURL: "https://c-surakarta.firebaseio.com",
+    projectId: "c-surakarta",
+    storageBucket: "",
+    messagingSenderId: "7671053084"
+  };
+  firebase.initializeApp(config);
+</script>
+
+<!-- Firebase UI -->
+<script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
+<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
+
+<script src="js/online-game.js"></script>
+
+</head>
+<body>
+    <div class="mini-container aero-div">
+        <div id="user-bar" style="display: inline;">
+            <button id="login-btn" onclick="window.open('surakarta-login.html');">Login</button>
+            <div id="useronline">Welcome, <span id="uid">NULL</span></div>
+            <button id="logout-btn" onclick="firebase.auth().signOut();">Logout</button>
+        </div>
+    </div>
+    <div class="mini-container aero-div" style="width: 70%; max-width: 70%;" align="center">
+        <h2>Surakarta Chess</h2>
+        <h3>Online Game</h3>
+        <div id="firebaseui-auth-container"></div>
+        <div id="loader"></div>
+	</div>
+    <div id="bottom-info" align="center">
+		<p>COMP3421 Assignment 1 (c) CHENG Yiran 2018</p>
+    </div>    
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Surakarta Instruction</title>
+<link rel="stylesheet" href="css/main-style.css" type="text/css" />
+</head>
+<body>
+    <div id="readme" class="mini-container aero-div" style="width: 70%; max-width: 70%;"align="center">
+	    <h2>Surakarta Chess</h2>
+	    <h3>How to play?</h3>
+	    <p>Move your red chessmen to capture as many black chessmen (controlled by programme) as possible and avoid be captured till the game ends.</p>
+        <p>In each turn, you can move any of your chessman on the board to any cross of lines. There are two ways to move, normal move and capturing move.</p>
+        <p>The game ends when one side has no chessman or someone asks for ending the game.</p>
+        <h3>How to do normal move?</h3>
+        <img src="instruction/readme-nomalmove.jpg" alt="normal move img" width="400px"/>
+        <p>As the picture shown above, you can move any chessman in your turn.</p>
+        <p>One chessman can move to any unoccupied box of totally 8 directions around it.</p>
+        <p>Note that normal move cannot capture any opposite chessman.</p>
+        <h3>How to do capturing move?</h3>
+        <p>A capturing move consists of traversing along an inner or outer circuit (colored blue or green in the illustration) around at least one of the eight corner loops of the board, followed by landing on an enemy piece, capturing it. Captured pieces are removed from the game.</p>
+        <img src="instruction/readme-capturing.jpg" alt="capturing move img" width="400px"/>
+        <p>As the picture shown above, for the star-marked red chessman, you can move this one to capture the black chessman marked with a cross in your turn.</p>
+        <p>Note that only capturing move can remove enemy's chessman.</p>
+        <h3>Online Game Rules</h3>
+        <p>In each of your turn, you have 30 seconds to move. If the time out, the turn will be changed to the competitor. If anyone logout or close the browser which means offline, after 50 seconds' detection, the offline player will be losing.</p>
+        <h3>That's it. Enjoy your play!</h3>
+        <input type="button" id="readmeButton" value="Back to Game" onclick="window.opener=null; window.open('','_self'); window.close();"/>
+        <br/>
+	</div>
+    <div id="bottom-info" align="center">
+		<p>COMP3421 Assignment 1 (c) CHENG Yiran 2018</p>
+	</div>
+</body>
+</html>

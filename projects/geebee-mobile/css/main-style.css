@@ -1,0 +1,175 @@
+/*================== General ==================*/
+body{
+    background: url("./../img/mainbackground.jpg") 0 / cover fixed;
+    font-family: helvetica, "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", Arial, sans-serif;
+    width: 100%;
+    font-size: 63%;
+}
+div{
+    border: 0em;
+}
+#bottom-info{
+    background-color:  rgba(32,32,48,0.3);
+    width: 100%;
+}
+canvas {
+    width: 100%;
+    /*min-width: 80em;
+    max-width: 80em;
+    height: 80em;
+    min-height: 80em;
+    max-height: 80em;*/
+    background: #333;
+    display: block;
+    margin: 0 auto;
+}
+/*================== Aero Style ===================*/
+/*
+.aero-div{
+    box-shadow: 0.5em 0.5em 1em rgba(50,50,50,0.5);
+    position: relative;
+    background: rgba(128,128,128,0.4);
+    overflow: hidden;
+}
+.aero-div::before{
+    content: '';
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+
+    margin: -3em;
+    z-index: -1;
+
+    background-image: url("./../img/mainbackground.jpg");
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    
+    filter: url(blur.svg#blur);
+    -webkit-filter: blur(1em);
+    -moz-filter: blur(1em);
+    -ms-filter: blur(1em);
+    -o-filter: blur(1em);
+    filter: blur(1em);
+}*/
+/*================= mini-container ===============*/
+.wide-container {
+    margin:0 auto;
+    margin-top: 4em;
+    margin-bottom: 2em;
+    width: 100%;
+    /*max-width: 80em;
+    padding: 0em;
+    width: 80em;
+    min-width: 80em;*/
+}
+.wide-container *{
+    display: inline;
+    min-height: 3em;
+    min-width: 10em;
+    margin: 1em;
+}
+.mini-container {
+    margin:0 auto;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    width: 100%;
+    /*max-width: 50em;
+    padding:1em;
+    width: 50em;
+    min-width: 50em;*/
+}
+.mini-container select{
+    margin:0;
+
+	border:1em solid #CCC;
+	
+    padding:1em;
+
+    max-width:42.7em;
+    width:100%;
+    min-width:10em;
+
+    background: rgba(255,255,255,0.5);
+}
+.mini-container input[type="button"]{
+    margin:1em;
+}
+.mini-container input{
+    margin:0;
+
+	border:0.1em solid #CCC;
+	
+    padding:1em;
+    padding-left: 3%;
+
+    max-width:40em;
+    width:100%;
+    min-width:10em;
+
+    background: rgba(255,255,255,0.5);
+}
+.mini-container input[type="reset"],
+.mini-container input[type="submit"],
+.mini-container input[type="button"]
+{
+    cursor:pointer;
+    max-width: 40em;
+    width: 50%;
+    min-width: 8em;
+}
+
+/*=================== Button ===================*/
+#speed-selector,
+#size-selector{
+    background:rgba(30,30,30,0.5);
+    color:#F0F0F0;
+    border: none; 
+    font-size:1.7em;
+    text-align: center;
+}
+input[type="button"]{
+	border:none;
+	background:rgba(30,30,30,0.5);
+	color:#F0F0F0;
+	font-size:1.7em;
+}
+input[type="button"]:hover{
+    background:rgba(30,30,40,0.8);
+	-webkit-transition:background 0.3s ease-in-out;
+	-moz-transition:background 0.3s ease-in-out;
+	transition:background-color 0.3s ease-in-out;
+}
+input[type="button"]:active{
+    border:none;
+	box-shadow:inset 0.1em 0.1em 2em rgba(0, 0, 0, 0.8);
+}
+input[type="button"]:focus{
+    border:none;
+	box-shadow:inset 0.1em 0.1em 0.5em rgba(255, 255, 255, 0.5);
+}
+/* ========== FONTS ==========*/
+h1 {
+    font-size:4em;
+    text-shadow:0.2em 0.2em 0.4em #333;
+    color:#F0F0F0;
+}
+h2 {
+    font-size:3.2em;
+    text-shadow:0.1em 0.1em 0.4em #333;
+    color:#F0F0F0;
+}
+h3 {
+    font-size:2.4em;
+    font-weight: normal;
+    text-shadow:0.05em 0.05em 0.1em #333;
+    color:#F0F0F0;
+}
+p {
+    font-size:2em;
+    color:#EEE;
+}
+#readme p{
+    text-align: left;
+    padding-left: 10%;
+    padding-right: 10%;
+}

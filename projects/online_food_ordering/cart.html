@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+	<title>Food Ordering System</title>
+
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/main_style.css" rel="stylesheet">
+	<script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
+	<script src="js/fo_firebase.js"></script>
+
+	<script language="JavaScript" src ="js/popper.min.js"></script>
+	<script language="JavaScript" src ="js/jquery-3.3.1.min.js"></script>
+	<script language="JavaScript" src ="js/bootstrap.min.js"></script>
+	<script language="JavaScript" src ="js/duplicate_content.js"></script>
+    <script language="JavaScript" src ="js/view_cart.js"></script>
+</head>
+<body>
+	<div id="banner">
+		<h2>Online Food Ordering</h2>
+	</div>
+	<div class="container-fluid" style="background: rgb(255,255,255,0.4); text-align: center;">
+		<!--MAIN BUTTONS-->
+	</div>
+    <div class="container-fluid">
+        <div class="row reminder-container">
+            <div class="col-lg-1 col-xl-1"></div>
+            <div class="col reminder" style="text-align: center;">
+                <h4>Foods Cart</h4>
+            </div>
+            <div class="col-lg-1 col-xl-1"></div>
+        </div>
+    </div>
+	<div id="food-card-container" class="container-fluid">
+        <h4>Loading ...</h4>
+		<!--Leave this div for loading the food cards.-->
+	</div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-3 col-lg-4 col-xl-4"></div>
+            <div class="col-6 col-lg-4 col-xl-4" style="text-align: right;">
+                <button type="button" class="btn btn-success btn-block" onclick="Checkout();">Order & Check Out</button>
+            </div>
+            <div class="col-3 col-lg-4 col-xl-4"></div>
+        </div>
+    </div>
+	<script language="JavaScript">ViewCart();</script>
+</body>
+</html>

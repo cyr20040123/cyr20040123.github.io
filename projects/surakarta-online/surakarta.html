@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Surakarta Chess Online</title>
+<link rel="stylesheet" href="css/main-style.css" type="text/css" />
+
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyBMvzJu_guEMFp3JpC-gjywqtobrKaHT4k",
+        authDomain: "c-surakarta.firebaseapp.com",
+        databaseURL: "https://c-surakarta.firebaseio.com",
+        projectId: "c-surakarta",
+        storageBucket: "",
+        messagingSenderId: "7671053084"
+    };
+    firebase.initializeApp(config);
+</script>
+
+<!-- Firebase UI -->
+<script type="text/javascript" src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
+<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
+
+<!--<script src="js/online-game.js"></script>-->
+<script type="text/javascript" src="./js/surakarta-game.js"></script>
+
+</head>
+<body>
+    <div class="mini-container aero-div" id="user-bar" style="width:100%">
+        <input type="button" id="login-btn" onclick="window.open('surakarta-login.html');" value="Login" style="width: 100px;"/>
+        <div id="useronline">[ <span id="uid">NULL</span> ]</div>
+        <input type="button" id="logout-btn" onclick="firebase.auth().signOut();" value="Logout" style="width: 100px;"/>
+    </div>
+
+    <div id="menu" class="mini-container aero-div" align="center">
+	    <h2>Surakarta Chess</h2>
+        <h3>Welcome to the Surakarta game.</h3>
+        <input type="button" id="startButton" value="Start a game"/>
+        <br/>
+        <input type="button" id="profileButton" value="My Profile" onclick="window.open('surakarta-myprofile.html');"/>
+        <br/>
+		<input type="button" id="readmeButton" value="Read Me" onclick="window.open('surakarta-readme.html');"/>
+        <br/>
+		<input type="button" id="quitButton" value="Quit" onclick="window.opener=null; window.open('','_self'); window.close();"/>
+        <!--Quit without noticing.-->
+		<br/>
+        <br/>
+	</div>
+    <div id="control-panel" class="wide-container aero-div" align="center" style="display:none">
+        <!--<input type="button" id="resetButton" value="Restart" onclick="init();"/>-->
+        <div id="score-div"><p id="timer">Competitor's Turn</p>&nbsp;<p id="my-score"></p> : <p id="competitor-score"></p></div>
+        <input type="button" id="stopButton" value="Give Up" onclick="gameover(true);"/>
+    </div>
+    <div id="playground" class="aero-div" width="800" height="600" style="display:none">
+        <!--<canvas id="cvs-cyr" width="800" height="600"></canvas>-->
+        <div id="grid-container"></div>
+    </div>
+    <div id="bottom-info" align="center">
+		<p>COMP3421 Assignment 2 (c) CHENG Yiran 2018</p>
+	</div>
+</body>
+</html>
+<!--
+    REFs:
+    http://www.w3school.com.cn/tags/html_ref_canvas.asp
+-->

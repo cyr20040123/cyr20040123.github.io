@@ -1,0 +1,97 @@
+:root{
+	--black2: rgba(48,48,32,0.2);
+	--black4: rgba(48,48,32,0.4);
+	--black6: rgba(48,48,32,0.6);
+	--black8: rgba(48,48,32,0.8);
+	--white2: rgba(240,240,220,0.2);
+	--white4: rgba(240,240,220,0.4);
+	--white6: rgba(240,240,220,0.6);
+	--white8: rgba(240,240,220,0.8);
+	--color00: #FFEDB7;
+	--color01: #FFE79C;
+	--color02: #FFDF7B;
+	--color03: #BFAD75;
+	--color04: #A68728;
+	--color05: #642;
+	--color10: #FFE1B7;
+	--color11: #FFD59C;
+	--color12: #FFC87B;
+	--color13: #BFA075;
+	--color14: #A67128;
+	--color20: #FFF9B7;
+	--color21: #FFF79C;
+	--color22: #FFF47B;
+	--circle-color: red;
+	/* for caller: var(--colorXY) */
+}
+
+body{
+	background-color: rgb(250,245,230);
+	/*background-size:cover;
+	background-attachment:fixed;*/
+}
+
+div.food-card{
+	background-color: rgba(250,245,200,0.4);
+	border-radius: 20px;
+	box-shadow: 1px 1px 4px grey;
+	padding: 5px;
+}
+
+div.food-card img{
+	max-height: 170px;
+	margin: 0px auto;
+}
+
+.row{
+	margin: 10px;
+}
+
+.table{
+	margin-bottom: 0px;
+}
+
+.input-group-prepend span{
+	width: 140px;
+}
+
+div#banner{
+	margin: 0px auto;
+	padding: 0px auto;
+    width: 100%;
+    height: 100px;
+    overflow: hidden;
+	background: url("./../img/banner.jpg") no-repeat;
+    background-size: cover;
+    background-position:center;
+	text-align:center;
+	color:white;
+}
+div#banner h2{
+	position: relative;
+	top: 20px;
+	padding:0px;
+	text-shadow: 1px 1px 10px black;
+}
+
+*{
+	color: #543;
+}
+
+div#orders-container{
+	text-align: center;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between center;
+}
+
+#orders-container div{
+	margin: 7px;
+	padding: 10px;
+	min-width: 350px;
+	max-width: 380px;
+	text-align: left;
+	background: #E0E8E8;
+	border-radius: 5px;
+	box-shadow: 1px 1px 5px black;
+}

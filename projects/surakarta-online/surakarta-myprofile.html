@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Surakarta Game</title>
+<link rel="stylesheet" href="css/main-style.css" type="text/css" />
+
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyBMvzJu_guEMFp3JpC-gjywqtobrKaHT4k",
+        authDomain: "c-surakarta.firebaseapp.com",
+        databaseURL: "https://c-surakarta.firebaseio.com",
+        projectId: "c-surakarta",
+        storageBucket: "",
+        messagingSenderId: "7671053084"
+    };
+    firebase.initializeApp(config);
+</script>
+
+<!-- Firebase UI -->
+<script type="text/javascript" src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
+<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
+
+<script type="text/javascript" src="./js/online-basis.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+</head>
+<body>
+    <div class="mini-container aero-div" id="user-bar">
+        <div style="display: inline-block;">
+            <input type="button" id="login-btn" onclick="window.open('surakarta-login.html');" value="Login" style="width: 100px;"/>
+            <div id="useronline">[ <span id="uid">NULL</span> ]</div>
+            <input type="button" id="logout-btn" onclick="firebase.auth().signOut();" value="Logout" style="width: 100px;"/>
+        </div>
+    </div>
+    <div class="mini-container aero-div" align="center">
+        <h2>Surakarta Chess</h2>
+        <h3>User Profile</h3>
+        <input type="text" id="email" disabled/>
+        <input type="text" id="id" disabled/>
+        <input type="text" id="win" disabled/>
+        <input type="text" id="lose" disabled/>
+        <input type="text" id="offline" disabled/>
+        <div style="margin:0px auto; text-align: center;">
+            <br/>
+            <div id="piechart_3d" style="display: block; margin: 0px auto; text-align: center; width: 400px; height: 240px;"></div>
+            <br/>
+        </div>
+	</div>
+    <div id="bottom-info" align="center">
+		<p>COMP3421 Assignment 2 (c) CHENG Yiran 2018</p>
+    </div>
+    <script>
+        var win=0,lose=0,offline=0,nogame=0,timeout=20;
+        function waitForLogin(){
+            console.log(timeout);
+            if (uid!=null) {
+                dbStart();
+                return;
+            }
+            if (timeout>0) {
+                timeout = timeout - 1;
+                setTimeout(waitForLogin, 500);
+                return;
+            }
+            else{
+                window.open('surakarta-login.html');
+                return;
+            }
+        }
+        function drawCharts(){
+            google.charts.load("current", {packages:["corechart"]});
+            google.charts.setOnLoadCallback(drawChart);
+            function drawChart() {
+                var data = google.visualization.arrayToDataTable([
+                ['Type', 'Counts'],
+                ['Winning Games', win],
+                ['Losing Games', lose],
+                ['Offline Games', offline],
+                ['No Record', nogame]
+                ]);
+                var options = {
+                title: 'My Game Statistics',
+                is3D: true,
+                height: 240,
+                width: 400
+                };
+                var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+                chart.draw(data, options);
+            }
+        }
+        function dbStart(){
+            firebase.database().ref("userdata/"+uid).on("value",function(snapshot){
+                var userJSON = readJSON(snapshot);
+                win = userJSON["win"];
+                lose = userJSON["lose"];
+                offline = userJSON["offline"];
+                document.getElementById("email").setAttribute("value","Email\t"+email);
+                document.getElementById("id").setAttribute("value",   "User ID\t"+uid);
+                document.getElementById("win").setAttribute("value",  "Winning\t"+win);
+                document.getElementById("lose").setAttribute("value", "Losing\t"+lose);
+                document.getElementById("offline").setAttribute("value","Offline\t"+offline);
+                if(win==0 && lose==0 && offline==0) nogame = 1;
+                drawCharts();
+            });
+        }
+        waitForLogin();
+    </script>
+        
+</body>
+</html>

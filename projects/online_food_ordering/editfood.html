@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+	<title>Food Ordering System</title>
+
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/main_style.css" rel="stylesheet">
+    <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
+    <script src="js/fo_firebase.js"></script>
+	<script language="JavaScript" src ="js/jquery-3.3.1.min.js"></script>
+	<script language="JavaScript" src ="js/bootstrap.min.js"></script>
+    <script language="JavaScript" src ="js/duplicate_content.js"></script>
+    <script language="JavaScript" src ="js/edit_food.js"></script>
+</head>
+
+<body>
+    <br/>
+    <script type="text/javascript">headBar();</script>
+    <br/>
+    <div class="container" id="form-container">
+
+        <!-- ====== ROW2: Personal information ====== -->
+
+        <div class="row reminder-container row2">
+            <div class="col-lg-1 col-xl-1"></div>
+            <div class="col reminder" style="text-align: left;">
+                <h4>Food Detail</h4>
+            </div>
+            <div class="col-lg-1 col-xl-1"></div>
+        </div>
+        <div class="row row2">
+            <div class="col-lg-1 col-xl-1"></div>
+            <div class="col-12 col-lg-10 col-xl-10">
+                <div class="form-group" id="personal-information-sheet">
+                    <div class="input-group mb-3"><div class="input-group-prepend">
+                        <span class="input-group-text">Database ID</span></div>
+                        <input type="text" class="form-control" name="dbid" id="dbid" required="required" disabled/>
+                    </div>
+                    <div class="input-group mb-3"><div class="input-group-prepend">
+                        <span class="input-group-text">Name</span></div>
+                        <input type="text" class="form-control" name="name" id="name" required="required" disabled/>
+                    </div>
+                    <div class="input-group mb-3"><div class="input-group-prepend">
+                        <span class="input-group-text">Description</span></div>
+                        <input type="text" class="form-control" name="description" id="description" required="required" disabled/>
+                    </div>
+                    <div class="input-group mb-3"><div class="input-group-prepend">
+                        <span class="input-group-text">Category</span></div>
+                        <select class="custom-select" name="category" id="category" required="required" disabled>
+                            <option selected disabled value=""> ▼ (Please Choose) </option>
+                            <option value="chinese">Chinese</option>
+                            <option value="western">Western</option>
+                            <option value="japanese">Japanese Cuisine</option>
+                            <option value="drink">Drink</option>
+                        </select>
+                    </div>
+					<div class="input-group mb-3"><div class="input-group-prepend">
+                        <span class="input-group-text">Availabe</span></div>
+                        <select class="custom-select" name="enabled" id="enabled" required="required" disabled>
+                            <option selected disabled value=""> ▼ (Please Choose) </option>
+                            <option value="true">True</option>
+                            <option value="false">False</option>
+                            <option disabled value="">The disabled won't be shown to customers.</option>
+                        </select>
+                    </div>
+                    <!-- small title size 
+					<div class="input-group mb-3"><div class="input-group-prepend">
+                        <span class="input-group-text" style="font-size: 14px; text-align:left; line-height:15px">Affiliated<br/>Organization</span></div>
+                        <input type="text" class="form-control" name="ao" id="ao" required="required" disabled/>
+                    </div>-->
+                    <div class="input-group mb-3"><div class="input-group-prepend">
+                        <span class="input-group-text">Price</span></div>
+                        <input type="number" class="form-control" name="price" id="price" required="required" disabled/>
+                    </div>
+                    <div class="input-group mb-3"><div class="input-group-prepend">
+                        <span class="input-group-text">Image URL</span></div>
+                        <input type="text" class="form-control" name="imgurl" id="imgurl" required="none" disabled/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row row2">
+            <div class="col-lg-1 col-xl-1"></div>
+            <div class="col-4 col-lg-3 col-xl-3" style="text-align: left;">
+                <button type="button" class="btn btn-warning next-btn btn-block" onclick="javascript: resetContent();">Reset</button>
+            </div>
+            <div class="col-4 col-lg-4 col-xl-4" style="text-align: center;">
+                <button type="button" id="edit-btn" class="btn btn-info next-btn btn-block" onclick="javascript: activeEdit();">Edit</button>
+            </div>
+            <div class="col-4 col-lg-3 col-xl-3" style="text-align: right;">
+                <button type="button" class="btn btn-danger next-btn btn-block" onclick="javascript: DeleteUser();">Delete</button>
+            </div>
+        </div>
+
+    </div>
+
+    <br/>
+</body>
+</html>
